@@ -1,0 +1,20 @@
+---
+
+services:
+  balancer:
+    container_name: balancer
+    image: openresty/openresty:focal
+    volumes:
+      - ./nginx.conf:/usr/local/openresty/nginx/conf/nginx.conf
+    ports:
+      - "80:80"
+  nginx1:
+    container_name: nginx1
+    image: nginx:latest
+    volumes:
+      - ./resources/index1.html:/usr/share/nginx/html/index.html
+  nginx2:
+    container_name: nginx2
+    image: nginx:latest
+    volumes:
+      - ./resources/index2.html:/usr/share/nginx/html/index.html
